@@ -86,8 +86,8 @@ export default class Create_product extends React.Component{
                 		<tr>
                 			<td>
                 				<Upload_image 
-                                                                photo_state={this.state.photo}
-                                                                get_Photo_id={this.get_Photo_id}/>
+                                                photo_state={this.state.photo}
+                                                get_Photo_id={this.get_Photo_id}/>
                 			</td>
                 			<td>
                 				<input name="title" onChange={this.handleChange.bind(this)}/>

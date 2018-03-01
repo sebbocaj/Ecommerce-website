@@ -1,62 +1,85 @@
 import React from 'react'
 import {Products}  from  '../api/Products'
+import Upload_image  from  './images_upload/Upload_image'
+import Dropdown from 'react-dropdown'
+import 'react-dropdown/style.css'
 
 export default class Admin_item_product extends React.Component{
 
-        constructor(){
-        super()
+        constructor(props){
+        super(props)
 
                 this.state = {
-                        invisible:'invisible',
-
+                        title:props.title,
+                        description:props.description,
+                        category:props.category,
+                        price:props.price,
+                        stock:props.stock,
+                        photo:props.photo
                 }
-
                 this.Update = this.Update.bind(this)
-                this.showInput = this.showInput.bind(this)
+                this.handleChange = this.handleChange.bind(this)
+                this.get_Photo_id = this.get_Photo_id.bind(this)
+                this._onSelect = this._onSelect.bind(this)
         }
 
+        handleChange (e) {       
+                this.setState({[e.target.name]:e.target.value})
+        }
 
-        Update (e) {
-                debugger
-                Products.update({_id: this.props.id},{$set: {[e.target.name]: e.target.value}})
+        get_Photo_id (photo_id) {
+                
+                this.setState({photo:photo_id})
+        }
+
+        _onSelect (options) {
+                this.setState({category:options.value})
+        }
+
+        Update () { 
+                
+                Products.update({_id: this.props.id},{$set: {title: this.state.title,
+                                                                description:this.state.description,
+                                                                category:this.state.category,
+                                                                price:this.state.price,
+                                                                stock:this.state.stock,
+                                                                photo:this.state.photo
+                                                                }})
         }
 
         Delete () {
-
                 Products.remove({_id: this.props.id})
-        }
-
-        showInput () {
-                this.setState({invisible:'visible'})
         }
    
 
-
         render(){
 
+                const options = ['Cat_1', 'Cat_2', 'Cat_3']
+
                 return(
-                <tr>
-                	
+                <tr>                	
                 			<td>
-                			     <img src={this.props.photo} width="30%" /><br/><button>Change</button>
+                			     <Upload_image 
+                                                photo_state={this.state.photo}
+                                                get_Photo_id={this.get_Photo_id}/>
                 			</td>
                 			<td>
-                			      {this.props.title}<br/><button onClick={this.showInput}>Change</button>
-                                              <div className={this.state.invisible}><input /><button name='title'  onClick={this.Update}>update</button></div>
+                                              <input onChange={this.handleChange} name='title'  value={this.state.title} />
                 			</td>
                 			<td>
-                			      {this.props.description}<br/><button>Change</button>
+                			      <input onChange={this.handleChange} name='description'  value={this.state.description} />
                 			</td>
                 			<td>
-                			        {this.props.category} <br/><button>Change</button>
+                                                <Dropdown className="dropdown" value={this.state.category} options={options} onChange={this._onSelect}  placeholder="Select Category" />    
                 			</td>
                 			<td>
-                			     {this.props.stock} <br/><button>Change</button>
+                			     <input onChange={this.handleChange} name='price'  value={this.state.price} />
                 			</td>
                 			<td>
-                			      {this.props.price} <br/><button>Change</button>
+                			      <input onChange={this.handleChange} name='stock'  value={this.state.stock} />
                 			</td>
                                         <td>
+                                                <button onClick={this.Update.bind(this)}>Update</button>
                                               <button onClick={this.Delete.bind(this)}>Delete</button>
                                         </td>
                         </tr>

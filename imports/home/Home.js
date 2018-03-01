@@ -19,10 +19,6 @@ export default class Home extends React.Component{
 	                
 	                <div className="products">
 	                	<Item_product />
-	                	<Item_product />
-	                	<Item_product />
-	                	<Item_product />
-	                	<Item_product />
 	                </div>
 
                 </div>

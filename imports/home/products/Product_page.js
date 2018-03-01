@@ -1,20 +1,24 @@
 import React from 'react'
+import {Cart}  from  '../../api/Cart';
 
 export default class Product_page extends React.Component{
 
+	addToCart () {
+		Cart.update({id_product:this.props.id},{$inc: {quantity: 1}},{upsert:true})
+	}
 
         render(){
 
                 return(
 	                <div className="product_page">
 	                     
-	                    <img src="http://res.cloudinary.com/dygu6sw0x/image/upload/c_scale,w_250/v1519230414/81510-contact-lenses.jpg" />
+	                    <img width="50%" src={this.props.location.state.photo} />
 	                    
 	                    <div>
-		                    <h2>Title of product</h2>
-		                    <p> Price </p>
-		                    <p> Description of the product </p>
-		                    <button>Add to cart</button>
+		                    <h2>{this.props.location.state.title}</h2>
+		                    <p> {this.props.location.state.price} </p>
+		                    <p> {this.props.location.state.description} </p>
+		                    <button onClick={this.addToCart.bind(this)}>Add to cart</button>
 	                    </div>
 	                </div>
 

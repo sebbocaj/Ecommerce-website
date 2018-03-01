@@ -1,5 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { Products  } from '../imports/api/Products'
+import { Orders  } from '../imports/api/Orders'
+
 
 Meteor.startup(() => {
   // code to run on server at startup

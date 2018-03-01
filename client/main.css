@@ -9,6 +9,10 @@ body {
 	
 }
 
+.center {
+	text-align:center;
+}
+
 .container {
 	width:100%;
 	margin: auto;
@@ -132,6 +136,21 @@ h1 {
 	width:50%;
 }
 
+.list_cart {
+	border: 1px solid #000000;
+	margin: 40px auto;
+	width:90%;
+	text-align:center;
+}
+
+.list_cart div {
+
+	margin: 40px auto;
+	width:90%;
+
+}
+
+
 
 /*------------------------------------------------- ADMIN --------------------------------------------------- */
 
@@ -170,14 +189,12 @@ h1 {
 
 /*-------------------- ADMIN PRODUCT -------------------- */
 
-.admin_product {
-	text-align:center;
-}
 
 .admin_product {
 	border: 1px solid #000000;
 	margin: 40px auto;
 	width:90%;
+	text-align:center;
 }
 
 .admin_product th{
@@ -198,22 +215,28 @@ h1 {
 
 /*-------------------- CART -------------------- */
 
-.cart{
-	text-align:center;
-}
-
-.cart table{
+.cart {
 	border: 1px solid #000000;
 	margin: 40px auto;
 	width:90%;
+	text-align:center;
 }
 
 .cart th{
 	height: 50px;
 }
 
+
+
 .cart td{
-	height: 30px;
+	padding-bottom:20px;
+	width:17%;
+}
+
+.cart_total {
+	font-weight: bold;
+	margin-right: 25%;
+	text-align:right;
 }
 
 
