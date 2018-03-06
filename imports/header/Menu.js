@@ -2,11 +2,24 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import React from "react";
 
 
-
 export default class Menu extends React.Component{
+ 
+	logOut () {
+		Meteor.logout()
+	}
 
 
         render(){
+
+        	{
+        		
+	       		if (this.props.log == 'loggedin') {
+	       			var log = <Link to="/login">Login</Link>
+	       		}
+	       		else if (this.props.log == 'loggedout') {
+	       			var log = <Link onClick={this.logOut.bind(this)} to="/">Logout</Link>
+	       		}
+	       	}
 
                 return(
 
@@ -22,7 +35,9 @@ export default class Menu extends React.Component{
 						        <Link to="/cart">Cart</Link>
 						       </li>
 						       <li>
-						        <Link to="/login">Login</Link>
+						       	
+						       		{log}
+						        
 						       </li>
 						       <li>
 						        <Link to="/register">Register</Link>

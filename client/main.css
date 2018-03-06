@@ -209,6 +209,36 @@ h1 {
 }
 
 
+/*-------------------- ADMIN ORDER -------------------- */
+
+.admin_display_orders {
+	border: 1px solid #000000;
+	margin: 40px auto;
+	text-align:center;
+	width:90%;
+}
+
+.admin_display_orders  td{
+	width:17%;
+	
+}
+.admin_order_product1 {
+	border: 1px solid #000000;
+	margin: 40px auto;
+	text-align:center;
+	width:90%;
+}
+
+.admin_order_product1{
+     
+}
+
+.admin_order_product2 {
+	
+	width:100%;
+}
+
+
 
 /*----------------------------------------------- CART ------------------------------------------------- */
 

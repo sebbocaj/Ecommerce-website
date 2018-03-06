@@ -36,7 +36,7 @@ export default class Cart_list_products extends React.Component{
 				
 				var cart = Products.find({ _id: {$in : list}}).fetch();
 				this.setState({cart});
-
+                    
 				cart.map ((ele, i) => {
 					allcart[i].price = ele.price
 				})
@@ -44,6 +44,7 @@ export default class Cart_list_products extends React.Component{
 				total += parseInt(Number(ele.price * ele.quantity))	
 				})
 				this.setState({total:total})
+
 			}
 		})
 	}
@@ -62,12 +63,13 @@ export default class Cart_list_products extends React.Component{
                     cartfororder[i].quantity = ele.quantity
 
                 })
-        debugger
+
         this.setState({order_products:cartfororder},() => {
-            debugger
-            console.log("=================",this.state)
+             this.props.history.push( {                
+                    pathname:'/cart/checkout', 
+                    state: {total: this.state.total, order_products: this.state.order_products}
+            })
         })
-        this.setState({banana:"fruit"},()=>{debugger})
     }
 
         render(){
@@ -127,12 +129,8 @@ export default class Cart_list_products extends React.Component{
                 		
                 	<div className="center">
 
-                	<Link to={{ 
-                        pathname:'/cart/checkout', 
-                        state: {total: this.state.total, order_products: this.state.order_products}
-                    }}>
                     <button onClick={this.addOrder.bind(this)}>Checkout</button>
-                    </Link>
+
 
                 	</div>
 	              </div>
