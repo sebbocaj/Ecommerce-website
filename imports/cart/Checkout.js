@@ -69,10 +69,8 @@ export default class Checkout extends React.Component{
                 var old_stock = Number(ele.stock);
                 var quantity = ele.quantity;
                 var newstock = old_stock - quantity
-
-                debugger
+                  debugger
                 Products.update({_id : id},{$inc: {stock: newstock}},(e,d)=>{
-                    debugger
                 })
             } )
 

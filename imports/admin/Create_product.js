@@ -41,7 +41,7 @@ export default class Create_product extends React.Component{
                                         description: this.state.description, 
                                         category: this.state.category, 
                                         price: this.state.price, 
-                                        stock: this.state.stock, 
+                                        stock: Number(this.state.stock), 
                                         photo: this.state.photo
                                 })
 
