@@ -3,7 +3,11 @@ import React from "react";
 
 
 
-export default class Admin_menu extends React.Component{
+export default class User_menu extends React.Component{
+
+	changePage(data) {
+		this.props.changePage(data)
+	}
 
         render(){
 
@@ -13,14 +17,12 @@ export default class Admin_menu extends React.Component{
                 	<div className="admin_menu">
 		               		<ul>
 						       <li>
-						        <Link to="/admin/product">Products</Link>
+						        <a onClick={this.changePage.bind(this, 'profile')}>Profile</a>
 						       </li>
 						       <li>
-						        <Link to="/admin/order">Orders</Link>
+						        <a onClick={this.changePage.bind(this, 'orders')}>Orders</a>
 						       </li>
-						       <li>
-						        <Link to="/admin/create_product">Create product</Link>
-						       </li>
+						     
 						    </ul>
 		            </div>
 		           

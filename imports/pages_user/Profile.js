@@ -1,31 +1,18 @@
 import React from 'react'
-import { Accounts } from 'meteor/accounts-base'
+
+
 
 export default class Profile extends React.Component{
 
     constructor () {
         super()
         this.state = {
-            email:'',
-            name:'',
-            surname:'',
-            id:''
+            email:''
         }
     }
 
     componentWillMount () {
-    Tracker.autorun(()=>{
-        var user = Meteor.user()
-        if(user){
-            var id = user._id
-            var email = user.emails[0].address
-            var name = user.profile.profile.name
-            var surname = user.profile.profile.surname
-
-            this.setState({email:email, name: name, surname: surname, id:id}) 
-            this.setState({user:user})
-        }
-    })
+    this.setState({email : this.props.email})
 }
 
     handleChange(e) {
@@ -33,9 +20,10 @@ export default class Profile extends React.Component{
     }
 
 
-     changeMail () {
-        Meteor.call ('updateEmail', Meteor.userId(), this.state.email )
+    changeMail () {
+        this.props.changeMail (this.state.email)
      }
+
 
 
     
@@ -44,14 +32,17 @@ export default class Profile extends React.Component{
 
                 return(
                 <div>
-                    <h1>Profile</h1>
+                    <h1>My profile</h1>
                     <div className="profile">
-                            <p>Name : {this.state.name}</p>
-                            <p>Surname : {this.state.surname}</p>
+                            <p>Name : {this.props.name}</p>
+                            <p>Surname : {this.props.surname}</p>
                             <p>E-mail : <input onChange={this.handleChange.bind(this)} value={this.state.email}/> 
                                 <button onClick={this.changeMail.bind(this)}>Modify</button></p>
 
                     </div>
+
+                    
+
                 </div>
                 )
         }

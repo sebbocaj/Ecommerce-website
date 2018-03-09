@@ -9,12 +9,16 @@ import Register from './pages_user/Register';
 import Profile from './pages_user/Profile';
 import Admin from './admin/Admin';
 
+import User from './pages_user/User';
+
+
 import Admin_list_products from './admin/Admin_list_products';
 import Admin_list_orders from './admin/Admin_list_orders';
 import Create_product from './admin/Create_product';
 
 import Cart_list_items from './cart/Cart_list_items';
-import Checkout from './cart/Checkout'; 
+import Checkout from './cart/Checkout';
+import Order_confirmation from './cart/Order_confirmation';  
 
 import {Products}  from  './api/Products'
 import {Cart}  from  './api/Cart'
@@ -29,7 +33,8 @@ export default class App extends React.Component{
         this.state = {
            db_products:[],
            db_orders:[],
-           log:''
+           log:'',
+          
                 }
     	}
 
@@ -43,15 +48,16 @@ export default class App extends React.Component{
 
                         var logstate = Meteor.user()
 				    		if (logstate != null) {
+				    			this.setState({log: 'loggedin'})
+				    		}
+
+				    		else {
 				    			this.setState({log: 'loggedout'})
 				    		}
-				    		else {
-				    			this.setState({log: 'loggedin'})
-				    		} 
-                                          
-                })  
-                  
+				                           
+                })        
     	}
+
 
 
 
@@ -67,10 +73,12 @@ export default class App extends React.Component{
 				      <Route exact path="/"  render={ (props) => (<List_products  {...props} db_products={this.state.db_products}/> ) } /> 
 				      <Route exact path="/login" render={ (props) => (<Login  {...props} log={this.state.log}/> ) }/>
 				      <Route exact path="/register" component={Register} />
-				      <Route exact path="/profile" component={Profile} />
+				      
 				      <Route path="/admin" render={ (props) => (<Admin  {...props} db_products={this.state.db_products}/> ) }/>
 
 				      	<Route path="/product" component={Product_page} />
+
+				      	<Route exact path="/user" component={User} />
 
 						<Route exact path="/admin/create_product" component={Create_product} />
 
@@ -78,8 +86,8 @@ export default class App extends React.Component{
 				    	<Route exact path="/admin/product" render={ (props) => (<Admin_list_products  {...props} db_products={this.state.db_products}/> ) } />
 
 				    	<Route exact path="/cart" component={Cart_list_items} />
-				    	<Route exact path="/cart/checkout" component={Checkout} />
-				    	
+				    	<Route exact path="/cart/checkout" render={ (props) => (<Checkout  {...props} log={this.state.log}/> ) }/>
+				    	<Route exact path="/cart/order-confirmation" component={Order_confirmation} />
 		      
 				    </div>
 				</Router>

@@ -3,8 +3,9 @@ import {Cart}  from  '../../api/Cart';
 
 export default class Product_page extends React.Component{
 
+
 	addToCart () {
-		Cart.update({id_product:this.props.id},{$inc: {quantity: 1}},{upsert:true})
+		Cart.update({id_product:this.props.location.state.id_product},{$inc: {quantity: 1}},{upsert:true})
 	}
 
         render(){

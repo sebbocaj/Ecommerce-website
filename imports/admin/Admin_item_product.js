@@ -37,18 +37,26 @@ export default class Admin_item_product extends React.Component{
         }
 
         Update () { 
+
+            Meteor.call (
+                'updateProduct',
+                    this.props.id,
+                    this.state.title, 
+                    this.state.description, 
+                    this.state.category,
+                    this.state.price,
+                    this.state.stock,
+                    this.state.photo
+                )
                 
-                Products.update({_id: this.props.id},{$set: {title: this.state.title,
-                                                                description:this.state.description,
-                                                                category:this.state.category,
-                                                                price:this.state.price,
-                                                                stock:this.state.stock,
-                                                                photo:this.state.photo
-                                                                }})
+                
         }
 
         Delete () {
-                Products.remove({_id: this.props.id})
+            Meteor.call (
+                'removeProduct',
+                this.props.id
+                )
         }
    
 

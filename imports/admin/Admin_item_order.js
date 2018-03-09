@@ -36,7 +36,7 @@ export default class Admin_item_order extends React.Component{
                 	       </tr>
 
                                <tr>
-                                <td colspan="6">
+                                <td colSpan="6">
                                        <b> Total </b>: {this.props.total}
                                 </td>
                                </tr>

@@ -5,7 +5,6 @@ import {Cart}  from  '../../api/Cart';
 export default class Item_product extends React.Component{
 
 	addToCart () {
-		
 		Cart.update({id_product:this.props.id}, {$inc: {quantity: 1}},{upsert:true})
 	}
 

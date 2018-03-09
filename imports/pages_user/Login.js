@@ -1,5 +1,6 @@
 import React from 'react'
-import {Accounts}       from 'meteor/accounts-base'
+import {Accounts} from 'meteor/accounts-base'
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 export default class Login extends React.Component{
 
@@ -12,6 +13,12 @@ export default class Login extends React.Component{
         this.handleChange = this.handleChange.bind(this)
     }
 
+    componentWillMount() {
+        
+        if(this.props.location.state != undefined) {
+        this.setState({email: this.props.location.state.email})
+        }
+    }
 
     handleChange(e) {
         this.setState({[e.target.name] : e.target.value})
@@ -38,11 +45,11 @@ export default class Login extends React.Component{
                 <div>
                     <h1>Login</h1>
                 	<div className="login">
-                        <p>E-mail : <input name="email" onChange = {this.handleChange} /></p>
+                        <p>E-mail : <input name="email" onChange = {this.handleChange} value={this.state.email} /></p>
                         <p>Password : <input name="password" onChange = {this.handleChange} /></p>
                         <button onClick={this.logIn.bind(this)}>Login</button>
                     </div>
-                <p>Not Register ? <a href="">Click here</a></p>
+                <p>Not Register ? <Link to="/register">Register</Link></p>
 
                 </div>
                 )

@@ -5,6 +5,7 @@ import Upload_image  from  './images_upload/Upload_image'
 import Dropdown from 'react-dropdown'
 import 'react-dropdown/style.css'
 
+
 export default class Create_product extends React.Component{
 
         constructor(){
@@ -36,17 +37,17 @@ export default class Create_product extends React.Component{
  
 
         createProduct () {
-                
-                Products.insert({       title: this.state.title, 
-                                        description: this.state.description, 
-                                        category: this.state.category, 
-                                        price: this.state.price, 
-                                        stock: Number(this.state.stock), 
-                                        photo: this.state.photo
-                                })
 
+                Meteor.call (
+                    'createProduct', 
+                    this.state.title, 
+                    this.state.description, 
+                    this.state.category,
+                    this.state.price,
+                    Number(this.state.stock),
+                    this.state.photo
+                )
         }
-
 
         render(){
 
@@ -62,6 +63,7 @@ export default class Create_product extends React.Component{
 
                 	<h1>Create a new product</h1>
                 	<table>
+                    <tbody>
                 		<tr>
                 			<th>
                 				Photo
@@ -106,6 +108,7 @@ export default class Create_product extends React.Component{
                 				<input name="price" onChange={this.handleChange.bind(this)}/>
                 			</td>
                 		</tr>
+                        </tbody>
                 	</table>
 
                 	<div>

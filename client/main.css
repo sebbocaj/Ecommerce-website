@@ -31,6 +31,18 @@ h1 {
 	display:block;
 }
 
+a:hover {
+	cursor: pointer; 
+}
+
+button:hover {    
+    cursor: pointer;   
+}
+
+button:active{
+    color:grey;
+}
+
 
 /*-------------------- HEADER -------------------- */
 
@@ -284,3 +296,23 @@ h1 {
 }
 
 
+/*------------------------------------------------- User -------------------------------------------------- */
+
+.user_order {
+	border: 1px solid #000000;
+	margin: 40px auto;
+	width:90%;
+	text-align:center;
+}
+
+.user_order th{
+	height: 50px;
+}
+
+.user_order th{
+	width:20%;
+}
+
+.user_order td{
+	width:20%;
+}

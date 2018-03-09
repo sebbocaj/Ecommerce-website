@@ -6,7 +6,7 @@ import {Products}  from  '../api/Products'
 import {Cart}  from  '../api/Cart'
 import {Orders}  from  '../api/Orders'
 
-export default class Cart_list_products extends React.Component{
+export default class Cart_list_items extends React.Component{
 
     constructor(){
         super()
@@ -22,30 +22,24 @@ export default class Cart_list_products extends React.Component{
         }
 
 	componentWillMount() {
+
 		Tracker.autorun(()=> {
 			var list = []
 
 			var total = 0
 			var allcart = Cart.find({}).fetch()
-			this.setState({allcart})
-				
-			if(allcart.length > 0) {
 				allcart.map((ele) =>{					
 					list.push(ele.id_product)				
 				})
-				
-				var cart = Products.find({ _id: {$in : list}}).fetch();
-				this.setState({cart});
-                    
+				var cart = Products.find({ _id: {$in : list}}).fetch();       
 				cart.map ((ele, i) => {
 					allcart[i].price = ele.price
 				})
 				allcart.map((ele) => {
 				total += parseInt(Number(ele.price * ele.quantity))	
 				})
-				this.setState({total:total})
+				this.setState({total, allcart, cart})
 
-			}
 		})
 	}
 
@@ -64,15 +58,19 @@ export default class Cart_list_products extends React.Component{
 
                 })
 
-        this.setState({order_products:cartfororder},() => {
-             this.props.history.push( {                
-                    pathname:'/cart/checkout', 
-                    state: {total: this.state.total, order_products: this.state.order_products}
-            })
-        })
+        this.props.history.push( {                
+              pathname:'/cart/checkout', 
+                 state: {total: this.state.total, order_products: cartfororder}
+         })
     }
 
         render(){
+
+            if(this.state.allcart.length == 0) {
+                return (<h1>Your cart is empty</h1>)
+             }
+
+             else {
 
                 return(
           			<div>
@@ -135,5 +133,6 @@ export default class Cart_list_products extends React.Component{
                 	</div>
 	              </div>
                 )
+            }
         }
 }

@@ -1,7 +1,17 @@
 import React from 'react'
-import Admin_item_order from './Admin_item_order';
+import User_order_item from './User_order_item';
 
-export default class Admin_list_orders extends React.Component{
+
+export default class User_list_orders extends React.Component{
+
+
+	constructor(props){
+        super(props)
+
+            this.state = {
+                    user_orders:'',               
+            }
+    }
 
 
 
@@ -9,19 +19,15 @@ export default class Admin_list_orders extends React.Component{
 
                 return(
                 <div>
-                	<h1>See orders</h1>
-                	<table className="admin_display_orders">
+                	<h1>See your orders</h1>
+                	<table className="user_order">
                         <tbody>
-                		<tr>
-                		
+                		<tr>      
                 			<th>
-                				Client
-                			</th>
+                				Photo
+                			</th>         		
                 			<th>
-                				Product Title
-                			</th>
-                			<th>
-                				Category
+                				Title
                 			</th>
                               <th>
                                 Price
@@ -37,21 +43,17 @@ export default class Admin_list_orders extends React.Component{
                     </table>
 
 
-
-                                          {
-                        this.props.db_orders.map ((ele, i)=>{
-                                return <Admin_item_order 
-                                        name = {ele.name}
-                                        surname = {ele.surname}
+                    {
+                        this.props.user_orders.map ((ele, i)=>{
+                                return <User_order_item 
                                         total = {ele.total}
                                         key  = {i}
-                                        id   = {ele._id}
-
                                         order_products = {ele.order_products}
                                        
                                         /> 
                           })
                     }
+                              
 
                 	
 

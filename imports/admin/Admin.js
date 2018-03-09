@@ -13,11 +13,7 @@ export default class Admin extends React.Component{
                 return(
                 <div>
 
-                
-					<Admin_menu />
-
-					<h1>Hello 'Bob' welcome to your admin page</h1>	
-				
+					<Admin_menu />				
 
                 </div>
                 )
