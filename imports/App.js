@@ -68,7 +68,7 @@ export default class App extends React.Component{
 				    <div className="container">			      
 				      <Menu log = {this.state.log}/>
 
-				      <hr />
+				      <hr style={{color:'black'}}/>
 				      
 				      <Route exact path="/"  render={ (props) => (<List_products  {...props} db_products={this.state.db_products}/> ) } /> 
 				      <Route exact path="/login" render={ (props) => (<Login  {...props} log={this.state.log}/> ) }/>

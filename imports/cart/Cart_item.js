@@ -61,7 +61,7 @@ export default class Cart extends React.Component{
 
                 		<tr>
                 			<td>
-                				<img src={this.props.photo} width="30%" />
+                				<img src={this.props.photo} width="40%" />
                 			</td>
                 			<td>
                 			    {this.props.title}	
@@ -70,15 +70,15 @@ export default class Cart extends React.Component{
                 			     {this.props.price}
                 			</td>
                 			<td>
-                			     <button onClick={this.removeQuantity.bind(this)}>-</button>
+                			     <a onClick={this.removeQuantity.bind(this)}> <span className="plus">-</span> </a>
                                                 {this.state.quantity}
-                                             <button onClick={this.addQuantity.bind(this)}>+</button>
+                                             <a onClick={this.addQuantity.bind(this)}> <span className="plus">+</span> </a>
                 			</td>
                 			<td>
                 				{this.state.total}
                 			</td>
                 				<td>
-                				<button onClick={this.delete.bind(this)}>Delete</button>
+                				<button className="buttonDelete" onClick={this.delete.bind(this)}>Delete</button>
                 			</td>
                 		</tr>
                 	

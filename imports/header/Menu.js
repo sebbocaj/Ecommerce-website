@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { NavLink } from 'react-router-dom'
 import React from "react";
 
 
@@ -14,14 +14,14 @@ export default class Menu extends React.Component{
         	{
         		
 	       		if (this.props.log == 'loggedout') {
-	       			var log = <Link to="/login">Login</Link>
+	       			var log = <NavLink to="/login">Login</NavLink>
 	       			var account = {display: 'none'};
 	       			var register = {display: 'inline-block'}
 	       		}
 
 
 	       		else if (this.props.log == 'loggedin') {
-	       			var log = <Link onClick={this.logOut.bind(this)} to="/">Logout</Link>
+	       			var log = <NavLink onClick={this.logOut.bind(this)} to="/">Logout</NavLink>
 	       			var account = {display: 'inline-block'};
 	       			var register = {display: 'none'};
 	       		}
@@ -32,13 +32,13 @@ export default class Menu extends React.Component{
                 	<div className="header">
                 		<div className="logo">
 
-						    <Link to="/">Home</Link>
+						    <NavLink to="/">Home</NavLink>
 						       
                 		</div>
 		                <div>
 		               		<ul className="menu">
 		               		   <li>
-						        <Link to="/cart">Cart</Link>
+						        <NavLink to="/cart" activeClassName= "active">Cart</NavLink>
 						       </li>
 						       <li>
 						       	
@@ -46,13 +46,13 @@ export default class Menu extends React.Component{
 						        
 						       </li>
 						       <li style={register}>
-						        <Link to="/register">Register</Link>
+						        <NavLink to="/register">Register</NavLink>
 						       </li>
 						       <li style={account}>
-						        <Link  to="/user">account</Link>
+						        <NavLink  to="/user">account</NavLink>
 						       </li>
 						       <li>
-						        <Link to="/admin/product">Admin</Link>
+						        <NavLink to="/admin/product">Admin</NavLink>
 						       </li>
 						    </ul>
 		                </div>

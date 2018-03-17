@@ -54,13 +54,13 @@ export default class Register extends React.Component{
                     <h1>Register</h1>    
                     <div className="register">
                     <form  onChange = {this.handleChange}>
-                            <p>Name : <input name="name" required/></p>
-                            <p>Surname : <input name="surname" required/></p>
-                            <p>E-mail : <input name="email" required  type="email"/></p>
-                            <p>Password <input name="password" required/></p>
-                            <p>Confirm password <input name="password_check" required/></p>
-                            <span style={password}>Passwords should be the same</span>
-                            <button onClick={this.registerUser.bind(this)}>Register</button>
+                            <p><span>Name : </span><input name="name" required/></p>
+                            <p><span>Surname : </span><input name="surname" required/></p>
+                            <p><span>E-mail : </span><input name="email" required  type="email"/></p>
+                            <p><span>Password </span><input name="password" required/></p>
+                            <p><span>Confirm password </span><input name="password_check" required/></p>
+                            <p style={password}>Passwords should be the same</p>
+                            <button className="buttonLogin" onClick={this.registerUser.bind(this)}>Register</button>
                     </form>
                     </div>
                 </div>

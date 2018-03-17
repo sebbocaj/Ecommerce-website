@@ -120,33 +120,33 @@ export default class Checkout extends React.Component{
         render(){
 
             if (this.props.log == "loggedout") {
-              var name = <p>Name : <input onChange={this.handleChange} name='name'  value={this.state.name} /></p>
-              var surname = <p>Surname : <input onChange={this.handleChange} name='surname'  value={this.state.surname} /></p>
-              var email = <p>Email : <input onChange={this.handleChange} name='email'  value={this.state.email} /></p>
+              var name = <p><span>Name : </span><input onChange={this.handleChange} name='name'  value={this.state.name} /></p>
+              var surname = <p><span>Surname : </span><input onChange={this.handleChange} name='surname'  value={this.state.surname} /></p>
+              var email = <p><span>Email : </span><input onChange={this.handleChange} name='email'  value={this.state.email} /></p>
             }
 
             else if (this.props.log == "loggedin") {
-              var name = <p>Name : {this.state.name} </p>
-              var surname = <p>Surname : {this.state.surname} </p>
-              var email = <p>Email : {this.state.email} </p>
+              var name = <p><span>Name : {this.state.name} </span></p>
+              var surname = <p><span>Surname : {this.state.surname} </span></p>
+              var email = <p><span>Email : {this.state.email} </span></p>
             }
 
 
 
                 return(
-                <div className="checkout">
+                <div>
                     <h1>Checkout</h1>
-                	<div className="login">
+                	<div className="checkout">
                         {name}
                         {surname}
-                        <p>Address : <input onChange={this.handleChange} name='adress'  value={this.state.adress} /></p>
+                        <p><span>Address : </span><input onChange={this.handleChange} name='adress'  value={this.state.adress} /></p>
                          {email}   
                     </div>
 
-                    <div>
-                		Total : {this.props.location.state.total}
-                	</div>
-
+                    <p>
+                		Total :<b> {this.props.location.state.total}</b>
+                	</p>
+                   <div>
                     <StripeCheckout
                             token       =  {this.onToken}
                             stripeKey   =  "pk_test_cfRMeQKxGCk6E3UARgKe4KDA"
@@ -154,7 +154,7 @@ export default class Checkout extends React.Component{
                             email       =  {this.state.email}
                             currency    = "EUR"
                     />
-                   
+                   </div>
                 </div>
                 )
         }

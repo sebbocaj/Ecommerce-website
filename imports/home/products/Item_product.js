@@ -23,15 +23,15 @@ export default class Item_product extends React.Component{
 						  			id_product:this.props.id
 						  			 }
 						}}>
-						<img width="50%"src={this.props.photo} />
+						<img width="80%"src={this.props.photo} />
 						 </Link>
 
 	                   
 	                    <div>
 		                    <h2>{this.props.title}</h2>
-		                    <p>Price : {this.props.price} </p>
-		                    <p>Stock : {this.props.stock} </p>
-		                    <button onClick={this.addToCart.bind(this)}>Add to cart</button>
+		                    <p>Price :<b> {this.props.price} €</b></p>
+		                  
+		                    <button className="buttonCart" onClick={this.addToCart.bind(this)}>Add to cart</button>
 	                    </div>
 	                </div>
 

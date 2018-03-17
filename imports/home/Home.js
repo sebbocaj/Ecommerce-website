@@ -12,7 +12,7 @@ export default class Home extends React.Component{
                 return(
                 <div>
                     <div className="bar">
-	                    <Search />
+	                   
 	                    <Filter />
 	                    <Category_filter />
 	                </div>

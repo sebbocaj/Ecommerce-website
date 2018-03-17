@@ -127,7 +127,7 @@ export default class Cart_list_items extends React.Component{
                 		
                 	<div className="center">
 
-                    <button onClick={this.addOrder.bind(this)}>Checkout</button>
+                    <button className="buttonCart" onClick={this.addOrder.bind(this)}>Checkout</button>
 
 
                 	</div>

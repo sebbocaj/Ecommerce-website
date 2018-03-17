@@ -45,9 +45,9 @@ export default class Login extends React.Component{
                 <div>
                     <h1>Login</h1>
                 	<div className="login">
-                        <p>E-mail : <input name="email" onChange = {this.handleChange} value={this.state.email} /></p>
-                        <p>Password : <input name="password" onChange = {this.handleChange} /></p>
-                        <button onClick={this.logIn.bind(this)}>Login</button>
+                        <p><span>E-mail : </span><input name="email" onChange = {this.handleChange} value={this.state.email} /></p>
+                        <p><span>Password : </span><input name="password" onChange = {this.handleChange} /></p>
+                        <button className="buttonLogin" onClick={this.logIn.bind(this)}>Login</button>
                     </div>
                 <p>Not Register ? <Link to="/register">Register</Link></p>
 

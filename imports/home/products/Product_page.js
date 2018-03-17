@@ -17,9 +17,9 @@ export default class Product_page extends React.Component{
 	                    
 	                    <div>
 		                    <h2>{this.props.location.state.title}</h2>
-		                    <p> {this.props.location.state.price} </p>
+		                    <p>Price : <b> {this.props.location.state.price} €</b></p>
 		                    <p> {this.props.location.state.description} </p>
-		                    <button onClick={this.addToCart.bind(this)}>Add to cart</button>
+		                    <button className="buttonCart" onClick={this.addToCart.bind(this)}>Add to cart</button>
 	                    </div>
 	                </div>
 
