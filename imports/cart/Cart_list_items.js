@@ -47,7 +47,7 @@ export default class Cart_list_items extends React.Component{
 		Cart.update({id_product:id_product},{$inc: {quantity: qt}})
 	}
 
-	Delete(id) {
+	Delete = (id) => {
 		Cart.remove({_id: id})
 	}
 

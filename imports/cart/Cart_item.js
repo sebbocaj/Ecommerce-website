@@ -19,14 +19,15 @@ export default class Cart extends React.Component{
                                 if (ele.id_product == this.props.id_product) {
                                         this.setState({quantity: ele.quantity})
                                         this.setState({id:ele._id})
+                                        
                                 }    
                         }
                 )   
         }
 
-        componentDidMount() {
+/*         componentDidMount() {
                 this.setState({total:this.props.price * this.state.quantity})
-        }
+        } */
 
         
 
@@ -54,7 +55,8 @@ export default class Cart extends React.Component{
 
 
         render(){
-               
+               var total = this.props.price * this.state.quantity;
+
                 return(
                 
                         
@@ -75,7 +77,7 @@ export default class Cart extends React.Component{
                                              <a onClick={this.addQuantity.bind(this)}> <span className="plus">+</span> </a>
                 			</td>
                 			<td>
-                				{this.state.total}
+                				{total}
                 			</td>
                 				<td>
                 				<button className="buttonDelete" onClick={this.delete.bind(this)}>Delete</button>
