@@ -335,6 +335,8 @@ button:active{
 	width:17%;
 	
 }
+
+
 .admin_order_product1 {
 	border: 1px solid #000000;
 	margin: 40px auto;
@@ -342,13 +344,16 @@ button:active{
 	width:90%;
 }
 
-.admin_order_product1{
-     
+.admin_order_product2 {
+	width:100%;
 }
 
-.admin_order_product2 {
-	
-	width:100%;
+.admin_order_product2 td{
+	width:19%;
+}
+
+.admin_order_product2 td:first-child {
+	width:32%;
 }
 
 
